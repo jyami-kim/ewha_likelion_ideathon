@@ -1,11 +1,21 @@
 Rails.application.routes.draw do
   
+  get 'comt/com_create'
+  post 'comt/com_create/:post_id' => 'comt#com_create'
+  get 'comt/com_destroy'
+  get 'comt/com_destroy/:post_id/:com_id' => 'comt#com_destroy'
+
   root 'home#index'
   get 'home/index' => 'home#index'
   get 'home/ideaList' =>'home#ideaList'
   get 'home/uploadIdea' => 'home#uploadIdea'
-  get 'home/clickIdea' => 'home#clickIdea'
+  get 'home/clickIdea/:post_id' => 'home#clickIdea'
   get 'home/updateIdea' => 'home#updateIdea'
+  
+  post 'home/create' =>'home#create'
+  get 'home/updateIdea/:post_id' => 'home#updateIdea'
+  post 'home/update/:post_id' => 'home#update'
+  get 'home/destroy/:post_id' => 'home#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

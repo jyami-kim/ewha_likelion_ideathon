@@ -1,16 +1,42 @@
 <!-- Wrapper -->
-			<div id="wrapper">
+	<div id="wrapper">
+		
+		<h1 style=color:white>clickIdea : 상품개별 페이지입니다. </h1>
+				<a href= "/home/ideaList">목록으로</a>
+				<br>
+		
+		<h5>아이디어 번호: #<%=@post.id%></h5>
+		
+		<h4>예시 이미지</h4> <%= image_tag @post.img.url, style: 'width:300px'%>
+		<h2>아이디어 이름: <%=@post.title%></h2>
+		<h3>상세 설명</h3>
+		<p><%=@post.content%></p>
+		<a href ="/home/updateIdea/<%=@post.id%>">[수정]</a>
+		<a href ="/home/destroy/<%=@post.id%>">[삭제]</a>
+		<p>==========================</p>
+		
+		<div>
+			<%@post.comments.each do |com|%>
+			<!--여기 별명하고 내용부분 그리드 처리해서 보기 좋게-->
+				<p><%=com.name%> : <%=com.content%><a href="/comt/com_destroy/<%=@post.id%>/<%=com.id%>">  [삭제]</a></p>
+			<%end%>
+			<hr>
+		</div>
+	
+		<form action ="/comt/com_create/<%=@post.id%>" method ="post">
+			별명: <input type ="text" name='com_name' placeholder="아기사자 별명">
+			댓글 내용: <textarea name ="com_content" placeholder="아기사자의 한마디!"></textarea>
+			<input type ="submit" value ="작성">
+		</form>
 		
 		
-	<h1 style=color:white>clickIdea : 상품개별 페이지입니다. </h1>			
+
 		
-		
-		
-		        				<!-- Footer -->
-					<footer id="footer">
-						<p class="copyright">&copy; EwhaLikelion. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-					</footer>
-					
-			</div>		
-		<!-- BG -->
-			<div id="bg"></div>
+	<!-- Footer -->
+		<footer id="footer">
+			<p class="copyright">&copy; EwhaLikelion. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+		</footer>
+			
+	</div>		
+<!-- BG -->
+	<div id="bg"></div>

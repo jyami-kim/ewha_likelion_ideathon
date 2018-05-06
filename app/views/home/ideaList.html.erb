@@ -1,18 +1,26 @@
-	<!--<h1 style=color:white> Idealist : 전체 상품 진열 페이지입니다. </h1>-->	
-
 <!-- Wrapper -->
-			<div id="wrapper">
+	<div id="wrapper">
+
+		<h1 style=color:white> Idealist : 전체 상품 진열 페이지입니다. </h1>
+	
+		<a href="/home/uploadIdea">[상품 등록하기]</a><br>
 		
-		
-			<h1 style=color:white> Idealist : 전체 상품 진열 페이지입니다. </h1>
-		
-		
-		
-		        				<!-- Footer -->
-					<footer id="footer">
-						<p class="copyright">&copy; EwhaLikelion. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-					</footer>
-					
-			</div>		
-		<!-- BG -->
-			<div id="bg"></div>
+		<!--상품 진열 배치 해주세요ㅠㅠ-->
+		<div>
+			<%@posts.each do |post|%>
+				<h3>등록한 이미지</h3> <%= image_tag post.img.url, style: 'width:300px'%>
+				<h4>제목 : <%=post.title%></h4>
+				<h4><a href = "/home/clickIdea/<%=post.id%>">상세보기!</a></h4>
+				<hr>
+			<%end%>
+		</div>
+
+	<!-- Footer -->
+		<footer id="footer">
+			<p class="copyright">&copy; EwhaLikelion. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+		</footer>
+			
+	</div>	
+	
+<!-- BG -->
+	<div id="bg"></div>

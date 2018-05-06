@@ -1,16 +1,25 @@
 <!-- Wrapper -->
-			<div id="wrapper">
+	<div id="wrapper">
 		
+	<h1 style=color:white>updateIdea : 상품개별창에서 내용 수정하는 페이지입니다. </h1>			
 		
-	<h1 style=color:white>updateIdea : 상품개별창에서 내용 수정하는 페이지입니다. </h1>	
-		
-		
-		
-		        				<!-- Footer -->
-					<footer id="footer">
-						<p class="copyright">&copy; EwhaLikelion. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-					</footer>
-					
-			</div>		
-		<!-- BG -->
-			<div id="bg"></div>
+			<!--여기 배치좀 도와주세요ㅠㅠ-->
+		<%=form_tag("/home/update/#{@post.id}", method:"post", multipart: true) do%>
+			<%= label_tag(:title, "아이디어 이름: ")%>
+			<%= text_field_tag (:title), @post.title%>
+			<%= label_tag(:content, "아이디어 상세설명: ")%>
+			<%= text_area_tag (:content), @post.content%>
+			<%= label_tag('image_up',"아이디어 대표 이미지")%>
+			<%= file_field_tag 'image_up'%>
+
+			<%= submit_tag("등록완료")%>
+		<%end%>
+			
+	<!-- Footer -->
+		<footer id="footer">
+			<p class="copyright">&copy; EwhaLikelion. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+		</footer>
+			
+	</div>		
+<!-- BG -->
+	<div id="bg"></div>

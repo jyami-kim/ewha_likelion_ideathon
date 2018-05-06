@@ -1,7 +1,12 @@
+		<!--<h1 style=color:white> Idealist : 전체 상품 진열 페이지입니다. </h1>-->
+
 <!-- Wrapper -->
 	<div id="wrapper">
+		<h2> USER: <%= current_user.email%> </h2>
+		<h3> Usernickname: <%= current_user.nickname%></h3>
+		<a href = '/users/sign_out'> LOG OUT </a>
 
-		<h1 style=color:white> Idealist : 전체 상품 진열 페이지입니다. </h1>
+
 	
 		<a href="/home/uploadIdea">[상품 등록하기]</a><br>
 		
@@ -12,6 +17,8 @@
 				<h4>제목 : <%=post.title%></h4>
 				<h4><a href = "/home/clickIdea/<%=post.id%>">상세보기!</a></h4>
 				<hr>
+				<h4><%=post.likes.size%> 명이 구매하고 싶어합니다!</h4>
+			
 			<%end%>
 		</div>
 

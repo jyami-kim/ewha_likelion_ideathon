@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
-
+gem 'devise'
+gem 'cancancan'  #권한부여
+gem 'rolify'   #등급 부여
+gem 'tinymce-rails'
 gem 'rails_db'
 gem 'carrierwave','~>1.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

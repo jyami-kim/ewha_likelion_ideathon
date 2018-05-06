@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  devise_for :users
+  post 'post/:post_id/like' => 'likes#like_toggle'
+  get 'users/sign_out'
+  
   get 'comt/com_create'
   post 'comt/com_create/:post_id' => 'comt#com_create'
   get 'comt/com_destroy'

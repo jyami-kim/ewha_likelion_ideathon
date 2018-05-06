@@ -1,30 +1,54 @@
+<!--<h1 style=color:white>clickIdea : 상품개별 페이지입니다. </h1>->
 <!-- Wrapper -->
 	<div id="wrapper">
 		
-		<h1 style=color:white>clickIdea : 상품개별 페이지입니다. </h1>
+		
 				<a href= "/home/ideaList">목록으로</a>
 				<br>
 		
-		<h5>아이디어 번호: #<%=@post.id%></h5>
-		
+		<h5>아이디어 작성자: <%=@post.writer_name%></h5>
 		<h4>예시 이미지</h4> <%= image_tag @post.img.url, style: 'width:300px'%>
 		<h2>아이디어 이름: <%=@post.title%></h2>
 		<h3>상세 설명</h3>
 		<p><%=@post.content%></p>
-		<a href ="/home/updateIdea/<%=@post.id%>">[수정]</a>
-		<a href ="/home/destroy/<%=@post.id%>">[삭제]</a>
-		<p>==========================</p>
+		
+			<!--좋아요 구현-->
+				<p> <strong ><%=@post.likes.size%><strong> 개의 하트시그널!
+				</p>
+				
+				<p>
+					<% if current_user.is_like? (@post) %>
+					
+					<form action='/post/<%=@post.id%>/like' method='post'>
+					<button> 구매 취소! </button>
+					</form>
+					
+					<%else%>
+					<form action='/post/<%=@post.id%>/like' method='post'>
+					<button> 구매할래요! </button>
+					</form>
+					
+					<%end%>
+				</p>
+			<%if (can? :update, :destroy, @post) || (current_user.id == @post.user_id) %>
+				<%= link_to "[수정]", "/home/updateIdea/#{@post.id}"%>
+				<%= link_to "[삭제]", "/home/destroy/#{@post.id}"%>
+			<%end%>
+			<p>==========================</p>
 		
 		<div>
 			<%@post.comments.each do |com|%>
 			<!--여기 별명하고 내용부분 그리드 처리해서 보기 좋게-->
-				<p><%=com.name%> : <%=com.content%><a href="/comt/com_destroy/<%=@post.id%>/<%=com.id%>">  [삭제]</a></p>
+				<p><%=com.name%> : <%=com.content%>
+				<%@row = Post.find_by(id: @post.id)%>
+				<%if (can? :destroy, com) || (current_user.id ==@row.user_id)%>
+				<%= link_to "[삭제]","/comt/com_destroy/#{@post.id}/#{com.id}" %></p>
+				<%end%>
 			<%end%>
 			<hr>
 		</div>
 	
 		<form action ="/comt/com_create/<%=@post.id%>" method ="post">
-			별명: <input type ="text" name='com_name' placeholder="아기사자 별명">
 			댓글 내용: <textarea name ="com_content" placeholder="아기사자의 한마디!"></textarea>
 			<input type ="submit" value ="작성">
 		</form>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <title>이대멋사 아이디어톤</title>
+    <%= csrf_meta_tags %>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+		<%= stylesheet_link_tag    'application', media: 'all' %>
+		<link href= "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="assets/stylesheet/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		
+  </head>
+
+  <body>
+    <%= yield %>
+    <%= javascript_include_tag 'application' %>
+    <script src="assets/javascripts/jquery.min.js"></script>
+		<script src="assets/javascripts/skel.min.js"></script>
+		<script src="assets/javascripts/util.js"></script>
+		<script src="assets/javascripts/main.js"></script>
+  </body>
+</html>
